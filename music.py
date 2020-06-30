@@ -5,6 +5,7 @@ from tkinter import *
 from mutagen.id3 import ID3
 from tkinter.filedialog import askdirectory
 
+print('valu bilub dub du')
 #window
 player = tk.Tk()
 player.title('Music player')
