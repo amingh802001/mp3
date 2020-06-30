@@ -2,7 +2,6 @@ import json
 from urllib import request
 import requests
 
-print("margot robbie")
 class lyrics(object):
     def __init__(self):
         self.artists = {}
