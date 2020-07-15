@@ -1,7 +1,37 @@
 from tinytag import TinyTag
 import os
+import sqlite3 as sql
+from tkinter.filedialog import askdirectory
 
-class ordering (object):
+class song(object):
+    def __int__(self):
+        self.song_to_save = song
+    def save (self):
+        conn = sql.connect('song.db')
+        c = conn.cursor()
+        c.execute("CREATE TABLE IF NOT EXISTS songs(song BLOB)")
+        song = self.convert_song()
+        c.execute("INSERT INTO songs VALUES(?)", (song))
+        conn.commit()
+        c.close()
+        conn.close()
+    def convert_song(self):
+        directory = askdirectory()
+        os.chdir(directory)
+        for f in os.listdir(directory):
+            if f.endswith('.mp3'):
+                print(f)
+        name = input()
+        file_name = name
+        with open(file_name, 'rb') as file:
+            song = file.read()
+        return song
+
+    def delete(self , song):
+        pass
+class save (song):
+    pass
+class ordering (song):
     def __init__(self):
         self.song_query = {}
         self.liked_songs = {}
@@ -83,9 +113,9 @@ class ordering (object):
         pass
         for i in self.ordered_by_spec_var:
             print(self.ordered_by_spec_var[order])
-a = ordering()
+
 destdir = os.curdir
 
 files = [ f for f in os.listdir(destdir) if os.path.isfile(os.path.join(destdir,f)) ]
-
-song_list  = []
+a = song()
+a.save()
